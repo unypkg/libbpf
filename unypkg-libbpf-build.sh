@@ -77,12 +77,9 @@ get_include_paths
 
 unset LD_RUN_PATH
 
-./configure \
-    --prefix=/uny/pkg/"$pkgname"/"$pkgver"
+cd src || exit
 
-make -j"$(nproc)"
-make -j"$(nproc)" check 
-make -j"$(nproc)" install
+DESTDIR=/uny/pkg/"$pkgname"/"$pkgver" make -j"$(nproc)" install 
 
 ####################################################
 ### End of individual build script
